@@ -1,0 +1,65 @@
+<div id="preloader">
+  <div id="loopIcon"></div>
+  <img id="subLogo" src="https://static.wixstatic.com/media/fb039c_b2f780071b3442b585694bd2ddbd0b1e~mv2.png" alt="Sub Logo" />
+</div>
+
+<script type="text/javascript">
+(function () {
+  var preload = document.getElementById("preloader");
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  var loading = 0;
+  var id = setInterval(frame, 66); // SET TIME FOR PRELOADER
+  function frame() {
+    if (loading == 30) {
+      clearInterval(id);
+      preload.style.display = "none";
+    } else {
+      loading = loading + 1;
+      if (!isMobile) {
+        if (loading == 10) {
+          document.getElementById("preloader").classList.add('hidden');
+        }
+      } else if (isMobile) {
+        if (loading == 14) {
+          document.getElementById("preloader").classList.add('hidden');
+        }
+      }
+    }
+  }
+})();
+</script>
+
+<style>
+  #preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    overflow: visible;
+    background: #FFFFFF url('https://static.wixstatic.com/media/fb039c_243fede019d54a2691b6148798c4f180~mv2.gif') no-repeat center center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: 1s opacity ease-in;
+  }
+
+  #loopIcon {
+    width: 120px;
+    height: 120px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  #subLogo {
+    margin-top: 20px;
+    width: 140px;
+    opacity: 0.9;
+  }
+
+  #preloader.hidden {
+    opacity: 0;
+  }
+</style>
